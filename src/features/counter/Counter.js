@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   decrement,
@@ -6,7 +6,7 @@ import {
   leftShift,
   rightShift,
   complement,
-  selectCount
+  selectCount,
 } from "./counterSlice";
 import styles from "./Counter.module.css";
 
