@@ -41,7 +41,6 @@ export const slice = createSlice({
       state.value = newNumber
       state.steps.push(newStep);
     },
-    resetCounter: (state) => (state.value = 0),
     setLevel: (state, action) => {
       const newLevel = action.payload;
       state.value = newLevel;

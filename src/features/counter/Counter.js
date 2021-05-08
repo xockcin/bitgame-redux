@@ -8,7 +8,8 @@ import {
 import styles from "./Counter.module.css";
 
 export function Counter() {
-  const value = useSelector(state => state.counter.value);
+  const {value, pair} = useSelector(state => state.counter);
+  const showGoal = useSelector(state => state.display.showGoal)
   const dispatch = useDispatch();
 
   const byteFromNumber = (number) => {
@@ -19,7 +20,8 @@ export function Counter() {
     return result;
   };
 
-  const byte = byteFromNumber(value).map((bit, index) => {
+  const byteData = showGoal ? byteFromNumber(pair[1]) : byteFromNumber(value)
+  const byte = byteData.map((bit, index) => {
     return (
       <Button
         className={"m-1 border"}

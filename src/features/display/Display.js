@@ -1,5 +1,7 @@
 import React from "react";
+import {Button} from "react-bootstrap"
 import { useSelector } from "react-redux";
+import { toggleShowGoal } from "./displaySlice";
 
 export const Display = () => {
   const { steps, pair, level, value } = useSelector((state) => state.counter);
@@ -28,7 +30,12 @@ export const Display = () => {
         <h1>{pair[0]}</h1>
       </span>
       {stepDisplay}
-      <span><h1>{pair[1]}</h1></span>
+      <button
+        className="border"
+        onClick={() => console.log("click")}
+      >
+        <h1>{pair[1]}</h1>
+      </button>
       <span><h3>steps: {level - steps.length}</h3></span>
     </div>
   );
