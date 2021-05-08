@@ -1,17 +1,17 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  decrement,
-  increment,
-  leftShift,
-  rightShift,
-  complement,
+  doStep,
   selectCount,
+  selectLevel,
+  selectPair,
+  newGame,
 } from "./counterSlice";
 import styles from "./Counter.module.css";
 
 export function Counter() {
   const count = useSelector(selectCount);
+  const level = useSelector(selectLevel);
   const dispatch = useDispatch();
 
   const byteFromNumber = (number) => {
@@ -31,6 +31,7 @@ export function Counter() {
       <div className={styles.row}>
         <span className={styles.value}>{count}</span>
         <span className={styles.value}>{count.toString(16)}</span>
+        <span className={styles.value}>{level}</span>
       </div>
       <div className={styles.row}>
         <span className={styles.value}>{byte}</span>
@@ -39,37 +40,45 @@ export function Counter() {
         <button
           className={styles.button}
           aria-label="Increment value"
-          onClick={() => dispatch(increment())}
+          onClick={() => dispatch(doStep("+"))}
         >
           +
         </button>
         <button
           className={styles.button}
           aria-label="Left shift value"
-          onClick={() => dispatch(leftShift())}
+          onClick={() => dispatch(doStep("<"))}
         >
           {"<"}
         </button>
         <button
           className={styles.button}
           aria-label="Complement value"
-          onClick={() => dispatch(complement())}
+          onClick={() => dispatch(doStep("~"))}
         >
           ~
         </button>
         <button
           className={styles.button}
           aria-label="Right shift value"
-          onClick={() => dispatch(rightShift())}
+          onClick={() => dispatch(doStep(">"))}
         >
           {">"}
         </button>
         <button
           className={styles.button}
           aria-label="Decrement value"
-          onClick={() => dispatch(decrement())}
+          onClick={() => dispatch(doStep("-"))}
         >
           -
+        </button>
+      </div>
+      <div>
+        <button
+          className={styles.button}
+          onClick={() => dispatch(newGame())}
+        >
+          reset
         </button>
       </div>
     </div>
