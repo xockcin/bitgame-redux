@@ -13,8 +13,21 @@ const doToken = (number,token) => {
       return Math.floor(number / 2);
     case "-":
       return (number === 0) ? 255 : number - 1
+    case "!":
+      return 255
     default:
       console.log("Invalid Token");
+  }
+}
+
+const doExtra = (number, register, token) => {
+  switch (token) {
+    case "&":
+      return number & register
+    case "|":
+      return number | register
+    case "^":
+      return number ^ register
   }
 }
 
@@ -31,6 +44,7 @@ export const slice = createSlice({
     level: 3,
     pair: [0,0],
     steps: [],
+    register: 0
   },
   reducers: {
     doStep: (state, action) => {

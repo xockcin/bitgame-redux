@@ -8,7 +8,7 @@ import {
 import styles from "./Counter.module.css";
 
 export function Counter() {
-  const {value, pair} = useSelector(state => state.counter);
+  const {value, pair, register} = useSelector(state => state.counter);
   const showGoal = useSelector(state => state.display.showGoal)
   const dispatch = useDispatch();
 
@@ -20,19 +20,23 @@ export function Counter() {
     return result;
   };
 
-  const byteData = showGoal ? byteFromNumber(pair[1]) : byteFromNumber(value)
-  const byte = byteData.map((bit, index) => {
+  const byte = byteFromNumber(value).map((bit, index) => {
     return (
-      <Button
-        className={"m-1 border"}
-        variant={bit ? "dark" : "light"}
-      >
+      <Button className={"m-1 border"} variant={bit ? "dark" : "light"}>
         {7 - index}
       </Button>
-    )
+    );
   });
 
-  const tokenArray = ["+", "<", "~", ">", "-"]
+  const reg = byteFromNumber(register).map((bit, index) => {
+    return (
+      <Button className={"m-1 border"} variant={bit ? "dark" : "light"}>
+        {7 - index}
+      </Button>
+    );
+  });
+
+  const tokenArray = ["+", "<", "~", ">", "-", "!"]
 
   const buttons = tokenArray.map(token => {
     return (
@@ -47,8 +51,13 @@ export function Counter() {
 
   return (
     <div>
-      <div className={styles.row}>
-        <span className={styles.value}>{byte}</span>
+      <div className="flex-column">
+        <h1>
+          <span className={styles.value}>{reg}</span>
+        </h1>
+        <h1>
+          <span className={styles.value}>{byte}</span>
+        </h1>
       </div>
       <div className={styles.row}>{buttons}</div>
       <div>
