@@ -23,4 +23,4 @@ Next steps:
 -implement level selector
 -make it look good
 
-I will try out other buttons in my original bitgame-react file
+Note: Actually I am messing around with other buttons. I was going to do it in bitgame-react but then I remembered that it's all janked up. I have implemented the all on button and have begun to implement register.

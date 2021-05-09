@@ -4,6 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   doStep,
   newGame,
+  saveToReg,
+  regAnd,
+  regOr,
+  regXor
 } from "./counterSlice";
 import styles from "./Counter.module.css";
 
@@ -36,7 +40,7 @@ export function Counter() {
     );
   });
 
-  const tokenArray = ["+", "<", "~", ">", "-", "!"]
+  const tokenArray = ["+", "<", "~", ">", "-"]
 
   const buttons = tokenArray.map(token => {
     return (
@@ -60,6 +64,20 @@ export function Counter() {
         </h1>
       </div>
       <div className={styles.row}>{buttons}</div>
+      <div className={styles.row}>
+        <button className={styles.button} onClick={() => dispatch(saveToReg())}>
+          =
+        </button>
+        <button className={styles.button} onClick={() => dispatch(regAnd())}>
+          &
+        </button>
+        <button className={styles.button} onClick={() => dispatch(regOr())}>
+          |
+        </button>
+        <button className={styles.button} onClick={() => dispatch(regXor())}>
+          ^
+        </button>
+      </div>
       <div>
         <button className={styles.button} onClick={() => dispatch(newGame())}>
           reset

@@ -60,20 +60,22 @@ export const slice = createSlice({
   name: "display",
   initialState: {
     mode: "dec",
-    showGoal: false
+    showGoal: false,
   },
   reducers: {
-    setMode: (state,action) => {
-      const newMode = action.payload
-      state.mode = newMode
+    setMode: (state, action) => {
+      const newMode = action.payload;
+      state.mode = newMode;
     },
-    toggleShowGoal: state => {
-      console.log(state.showGoal);
-      state.showGoal = !state.showGoal;
+    showGoal: (state) => {
+      state.showGoal=true;
+    },
+    hideGoal: (state) => {
+      state.showGoal = false;
     },
   },
 });
 
-export const { setMode, toggleShowGoal} = slice.actions;
+export const { setMode, showGoal, hideGoal} = slice.actions;
 
 export default slice.reducer;

@@ -51,7 +51,9 @@ export const Retro = () => {
   const { value } = useSelector((state) => state.counter);
   return (
     <div>
-      <h1>{value} {value.toString(16)} {getAscii(value)}</h1>
+      <h1>
+        {value} {value.toString(16)} {getAscii(value)}
+      </h1>
     </div>
   );
 }

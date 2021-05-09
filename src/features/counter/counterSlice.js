@@ -20,7 +20,7 @@ const doToken = (number,token) => {
   }
 }
 
-const doExtra = (number, register, token) => {
+const doRegToken = (number, register, token) => {
   switch (token) {
     case "&":
       return number & register
@@ -41,18 +41,41 @@ export const slice = createSlice({
   name: "counter",
   initialState: {
     value: 0,
-    level: 3,
-    pair: [0,0],
+    level: 7,
+    pair: [0, 0],
     steps: [],
-    register: 0
+    register: 0,
   },
   reducers: {
     doStep: (state, action) => {
       const number = state.value;
       const token = action.payload;
       const newNumber = doToken(number, token);
-      const newStep = {number: newNumber, token}
-      state.value = newNumber
+      const newStep = { number: newNumber, token };
+      state.value = newNumber;
+      state.steps.push(newStep);
+    },
+    saveToReg: (state) => {
+      state.register = state.value;
+      const newStep = { number: state.value, token: "=" };
+      state.steps.push(newStep);
+    },
+    regAnd: (state) => {
+      const newNumber = state.value & state.register;
+      const newStep = { number: newNumber, token: "&" }
+      state.value = newNumber;
+      state.steps.push(newStep);
+    },
+    regOr: (state) => {
+      const newNumber = state.value | state.register;
+      const newStep = { number: newNumber, token: "|" };
+      state.value = newNumber;
+      state.steps.push(newStep);
+    },
+    regXor: (state) => {
+      const newNumber = state.value ^ state.register;
+      const newStep = { number: newNumber, token: "^" };
+      state.value = newNumber;
       state.steps.push(newStep);
     },
     setLevel: (state, action) => {
@@ -61,10 +84,11 @@ export const slice = createSlice({
     },
     newGame: (state) => {
       let pair = sample(pairs[state.level]);
-      state.pair = pair
-      console.log("pair: " + state.pair)
-      state.value = pair[0]
+      state.pair = pair;
+      console.log("pair: " + state.pair);
+      state.value = pair[0];
       state.steps = []
+      state.register = 0
     },
   },
 });
@@ -72,6 +96,10 @@ export const slice = createSlice({
 export const {
   doStep,
   newGame,
+  saveToReg,
+  regAnd,
+  regOr,
+  regXor
 } = slice.actions;
 
 export const selectCount = (state) => state.counter.value;
