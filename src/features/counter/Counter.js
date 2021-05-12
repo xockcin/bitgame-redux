@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Button} from "react-bootstrap"
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -7,7 +7,8 @@ import {
   saveToReg,
   regAnd,
   regOr,
-  regXor
+  regXor,
+  bitFlip
 } from "./counterSlice";
 import styles from "./Counter.module.css";
 
@@ -26,7 +27,7 @@ export function Counter() {
 
   const byte = byteFromNumber(value).map((bit, index) => {
     return (
-      <Button className={"m-1 border"} variant={bit ? "dark" : "light"}>
+      <Button className={"m-1 border"} variant={bit ? "dark" : "light"} onClick={() => dispatch(bitFlip(7-index))}>
         {7 - index}
       </Button>
     );

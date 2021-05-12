@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <Retro />
-      <Display />
+      {/* <Display /> */}
       <Counter />
     </div>
   );

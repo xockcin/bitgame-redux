@@ -78,6 +78,15 @@ export const slice = createSlice({
       state.value = newNumber;
       state.steps.push(newStep);
     },
+    bitFlip: (state, action) => {
+      const bit = action.payload
+      const number = state.value
+      if (number & 1<<bit) {
+        state.value = number - (2**bit)
+      } else {
+        state.value = number + 2 ** bit;
+      }
+    },
     setLevel: (state, action) => {
       const newLevel = action.payload;
       state.value = newLevel;
@@ -99,7 +108,8 @@ export const {
   saveToReg,
   regAnd,
   regOr,
-  regXor
+  regXor,
+  bitFlip
 } = slice.actions;
 
 export const selectCount = (state) => state.counter.value;
