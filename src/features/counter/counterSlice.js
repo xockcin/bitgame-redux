@@ -20,20 +20,8 @@ const doToken = (number,token) => {
   }
 }
 
-const doRegToken = (number, register, token) => {
-  switch (token) {
-    case "&":
-      return number & register
-    case "|":
-      return number | register
-    case "^":
-      return number ^ register
-  }
-}
-
 const sample = (array) => {
-  let max = array.length;
-  let index = Math.floor(Math.random() * max);
+  let index = Math.floor(Math.random() * array.length);
   return array[index];
 };
 
@@ -41,7 +29,7 @@ export const slice = createSlice({
   name: "counter",
   initialState: {
     value: 0,
-    level: 7,
+    level: 3,
     pair: [0, 0],
     steps: [],
     register: 0,
@@ -109,12 +97,8 @@ export const {
   regAnd,
   regOr,
   regXor,
-  bitFlip
+  bitFlip,
+  setLevel
 } = slice.actions;
-
-export const selectCount = (state) => state.counter.value;
-export const selectSteps = state => state.counter.steps
-export const selectPair = state => state.counter.pair
-export const selectLevel = state => state.counter.level
 
 export default slice.reducer;

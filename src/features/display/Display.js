@@ -1,10 +1,10 @@
 import React from "react";
-import {Button} from "react-bootstrap"
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { showGoal, hideGoal } from "./displaySlice";
 
 export const Display = () => {
   const { steps, pair, level, value } = useSelector((state) => state.counter);
+  const dispatch = useDispatch();
   const stepDisplay = steps.map(step => {
     return (
       <span className={"m-2 border p-2 rounded-pill"}>
@@ -26,14 +26,14 @@ export const Display = () => {
 
   return (
     <div className={"d-flex justify-content-evenly p-3"}>
-      <span>
+      <span className="border bg-success rounded p-1">
         <h1>{pair[0]}</h1>
       </span>
       {stepDisplay}
       <span
-        className="border"
-        onMouseEnter={() => showGoal()}
-        onMouseLeave={() => hideGoal()}
+        className="border bg-danger rounded p-1"
+        onMouseEnter={() => dispatch(showGoal())}
+        onMouseLeave={() => dispatch(hideGoal())}
       >
         <h1>{pair[1]}</h1>
       </span>

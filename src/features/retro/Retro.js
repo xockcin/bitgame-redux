@@ -35,7 +35,7 @@ const getAscii = (num) => {
     "GS",
     "RS",
     "US",
-    "SP",
+    "space",
   ];
 
   if (num < 33) {
@@ -45,15 +45,20 @@ const getAscii = (num) => {
   } else {
     return String.fromCharCode(num);
   }
-};
+}
+
+const getSigned = (number) => {
+  const highBit = number & 128
+  return highBit ? number - 256 : number
+}
 
 export const Retro = () => {
   const { value } = useSelector((state) => state.counter);
   return (
     <div>
-      <h1>
-        {value} {value.toString(16)} {getAscii(value)}
-      </h1>
+      <h3>
+        dec: {value} | hex: {value.toString(16)} | ascii: {getAscii(value)} | signed: {getSigned(value)}
+      </h3>
     </div>
   );
 }

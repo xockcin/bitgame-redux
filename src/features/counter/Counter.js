@@ -8,14 +8,18 @@ import {
   regAnd,
   regOr,
   regXor,
-  bitFlip
+  bitFlip,
+  setLevel
 } from "./counterSlice";
+import {spendTokens,earnTokens} from "../tokens/tokensSlice"
 import styles from "./Counter.module.css";
 
 export function Counter() {
   const {value, pair, register} = useSelector(state => state.counter);
   const showGoal = useSelector(state => state.display.showGoal)
   const dispatch = useDispatch();
+
+  useEffect(() => dispatch(newGame()), []);
 
   const byteFromNumber = (number) => {
     let result = [];
@@ -28,6 +32,14 @@ export function Counter() {
   const byte = byteFromNumber(value).map((bit, index) => {
     return (
       <Button className={"m-1 border"} variant={bit ? "dark" : "light"} onClick={() => dispatch(bitFlip(7-index))}>
+        {7 - index}
+      </Button>
+    );
+  });
+
+  const goal = byteFromNumber(pair[1]).map((bit, index) => {
+    return (
+      <Button className={"m-1 border"} variant={bit ? "dark" : "light"}>
         {7 - index}
       </Button>
     );
@@ -47,7 +59,10 @@ export function Counter() {
     return (
       <button
         className={styles.button}
-        onClick={() => dispatch(doStep(token))}
+        onClick={() => {
+          dispatch(doStep(token))
+          dispatch(spendTokens(1))
+        }}
       >
         {token}
       </button>
@@ -57,12 +72,12 @@ export function Counter() {
   return (
     <div>
       <div className="flex-column">
-        <h1>
-          <span className={styles.value}>{reg}</span>
-        </h1>
-        <h1>
-          <span className={styles.value}>{byte}</span>
-        </h1>
+        <h4>
+          <span>{register ? reg : ""}</span>
+        </h4>
+        <h4>
+          <span>{showGoal ? goal : byte}</span>
+        </h4>
       </div>
       <div className={styles.row}>{buttons}</div>
       <div className={styles.row}>

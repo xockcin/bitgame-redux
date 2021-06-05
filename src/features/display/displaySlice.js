@@ -46,7 +46,7 @@ const getAscii = num => {
   }
 }
 
-const display = (number, mode) => {
+const displayMode = (number, mode) => {
   if (mode === "dec") {
     return number.toString(10);
   } else if (mode === "hex") {
