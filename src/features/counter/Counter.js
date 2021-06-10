@@ -1,13 +1,11 @@
 import React, {useEffect} from "react";
-import {Button} from "react-bootstrap"
+import {Button, Dropdown} from "react-bootstrap"
 import { useSelector, useDispatch } from "react-redux";
 import {
   doStep,
   newGame,
   saveToReg,
-  regAnd,
-  regOr,
-  regXor,
+  doRegStep,
   bitFlip,
   setLevel
 } from "./counterSlice";
@@ -69,6 +67,21 @@ export function Counter() {
     );
   })
 
+  const regTokenArray = ["&","|","^"]
+
+  const regButtons = regTokenArray.map((token) => {
+    return (
+      <button
+        className={styles.button}
+        onClick={() => {
+          dispatch(doRegStep(token));
+        }}
+      >
+        {token}
+      </button>
+    );
+  });
+
   return (
     <div>
       <div className="flex-column">
@@ -84,15 +97,7 @@ export function Counter() {
         <button className={styles.button} onClick={() => dispatch(saveToReg())}>
           =
         </button>
-        <button className={styles.button} onClick={() => dispatch(regAnd())}>
-          &
-        </button>
-        <button className={styles.button} onClick={() => dispatch(regOr())}>
-          |
-        </button>
-        <button className={styles.button} onClick={() => dispatch(regXor())}>
-          ^
-        </button>
+        {register ? regButtons : ""}
       </div>
       <div>
         <button className={styles.button} onClick={() => dispatch(newGame())}>

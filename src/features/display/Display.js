@@ -1,5 +1,7 @@
 import React from "react";
+import {Dropdown} from "react-bootstrap"
 import { useSelector, useDispatch } from "react-redux";
+import {setLevel} from '../counter/counterSlice'
 import { showGoal, hideGoal } from "./displaySlice";
 
 export const Display = () => {
@@ -14,6 +16,19 @@ export const Display = () => {
       </span>
     );
   })
+
+  const levelSelect = (
+    <Dropdown>
+      <Dropdown.Toggle variant="success" id="dropdown-basic">
+        level {level}
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item onSelect={() => dispatch(setLevel(1))}>1</Dropdown.Item>
+        <Dropdown.Item onSelect={() => dispatch(setLevel(2))}>2</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  );
 
   if (steps.length === level) {
     if (value === pair[1]) {
@@ -38,7 +53,7 @@ export const Display = () => {
         <h1>{pair[1]}</h1>
       </span>
       <span>
-        <h3>steps: {level - steps.length}</h3>
+        {levelSelect}
       </span>
     </div>
   );

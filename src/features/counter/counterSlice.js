@@ -20,6 +20,17 @@ const doToken = (number,token) => {
   }
 }
 
+const doRegToken = (number, register, token) => {
+  switch (token) {
+    case "&":
+      return number & register
+    case "|":
+      return number | register
+    case "^":
+      return number ^ register
+  }
+}
+
 const sample = (array) => {
   let index = Math.floor(Math.random() * array.length);
   return array[index];
@@ -48,23 +59,12 @@ export const slice = createSlice({
       const newStep = { number: state.value, token: "=" };
       state.steps.push(newStep);
     },
-    regAnd: (state) => {
-      const newNumber = state.value & state.register;
-      const newStep = { number: newNumber, token: "&" }
-      state.value = newNumber;
-      state.steps.push(newStep);
-    },
-    regOr: (state) => {
-      const newNumber = state.value | state.register;
-      const newStep = { number: newNumber, token: "|" };
-      state.value = newNumber;
-      state.steps.push(newStep);
-    },
-    regXor: (state) => {
-      const newNumber = state.value ^ state.register;
-      const newStep = { number: newNumber, token: "^" };
-      state.value = newNumber;
-      state.steps.push(newStep);
+    doRegStep: (state, action) => {
+      const token = action.payload
+      const newNumber = doRegToken(state.value, state.register, token)
+      const newStep = {number: newNumber, token: token}
+      state.value = newNumber
+      state.steps.push(newStep)
     },
     bitFlip: (state, action) => {
       const bit = action.payload
@@ -77,7 +77,7 @@ export const slice = createSlice({
     },
     setLevel: (state, action) => {
       const newLevel = action.payload;
-      state.value = newLevel;
+      state.level = newLevel;
     },
     newGame: (state) => {
       let pair = sample(pairs[state.level]);
@@ -97,6 +97,7 @@ export const {
   regAnd,
   regOr,
   regXor,
+  doRegStep,
   bitFlip,
   setLevel
 } = slice.actions;

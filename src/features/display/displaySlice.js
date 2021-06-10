@@ -76,6 +76,6 @@ export const slice = createSlice({
   },
 });
 
-export const { setMode, showGoal, hideGoal} = slice.actions;
+export const { setMode, showGoal, hideGoal } = slice.actions;
 
 export default slice.reducer;

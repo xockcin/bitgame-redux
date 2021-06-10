@@ -93,5 +93,19 @@ THOUGHT DUMP:
     - For instance, if we want to explain how to do a complement, we could say "for every bit, if it's off turn it on and if it's on turn it off," or better, "for every bit, make its value the opposite of what it is currently". Or, we could say, "Take the maximum possible value of this bit-set, which with three bits is seven, and subtract from it the current value, then return the result."
     - For a right shift, we could say "Divide the number in half and round down if necessary", or we could say "Starting from the rightmost bit, give every bit the value (on or off) of the bit directly to the left of it, and make the leftmost bit zero".
     - For increment, it is a little more complicated. We could of course say "Add one," but to put it in terms of bits we would have to say the following: "Start at the rightmost bit. If this bit is off, turn it on and quit; if this bit is on, turn it off and go to the next bit."
-    **Lesson 4: Bitgame-Ultra**
-    - When you enter the arcade, the first game you will play is called 
+    - When you are in the arcade, you will become an expert at using the five bit-moves to transform bit-sets into other bit sets. But you are still not quite ready to enter the arcade. There is still more you have to learn.
+    - **Lesson 4: Hexadecimal**
+    - Now we have four bits in our bit-set. The range of numbers we can represent is 0 through 15.
+    - Up until now, we have been representing the value of our bit-set using the familiar base ten. But now, because the range of numbers we can represent is greater than ten, we will start using a different number system called "hexadecimal", or base 16.
+    - From 0 through 9, hexadecimal is the same as base 10. But after 9, things get different.
+    - Just as the decimal system as ten digits, the hexadecimal system has 16 digits. Along with the numerals 0 through 9, it also uses the letters A through F.
+    - Hexadecimal might seem difficult and unfamiliar at first, but after you enter the arcade you will find that it is an easier way to think about the relationships between bit-sets and the numbers they represent.
+    - You are almost ready to enter the arcade.
+    - ... and so on and so forth
+
+### 6/10/21
+
+Here is what I need to do next:
+- Split the Counter component and state slice into pieces: byte, register, buttons, reg buttons, etc.
+- Create a system for controlling the state of the game in order to implement the tutorial content.
+- Implement a system for earning and spending tokens, and for grabbing and using special tokens.
