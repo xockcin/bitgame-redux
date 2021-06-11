@@ -12,7 +12,7 @@ import {
 import {spendTokens,earnTokens} from "../tokens/tokensSlice"
 import styles from "./Counter.module.css";
 
-export function Counter() {
+export const Counter = () => {
   const {value, pair, register} = useSelector(state => state.counter);
   const showGoal = useSelector(state => state.display.showGoal)
   const dispatch = useDispatch();
