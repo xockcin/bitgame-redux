@@ -17,6 +17,14 @@ export const Display = () => {
     );
   })
 
+  const levels = [...Array(11).keys()].splice(1)
+
+  const levelItems = levels.map(level => {
+    return (
+      <Dropdown.Item onSelect={() => dispatch(setLevel(level))}>{level}</Dropdown.Item>
+    );
+  })
+
   const levelSelect = (
     <Dropdown>
       <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -24,8 +32,7 @@ export const Display = () => {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item onSelect={() => dispatch(setLevel(1))}>1</Dropdown.Item>
-        <Dropdown.Item onSelect={() => dispatch(setLevel(2))}>2</Dropdown.Item>
+        {levelItems}
       </Dropdown.Menu>
     </Dropdown>
   );
