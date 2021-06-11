@@ -28,6 +28,8 @@ const doRegToken = (number, register, token) => {
       return number | register
     case "^":
       return number ^ register
+    default:
+      console.log("Invalid Token")
   }
 }
 

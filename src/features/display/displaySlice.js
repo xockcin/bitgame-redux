@@ -68,7 +68,7 @@ export const slice = createSlice({
       state.mode = newMode;
     },
     showGoal: (state) => {
-      state.showGoal=true;
+      state.showGoal = true;
     },
     hideGoal: (state) => {
       state.showGoal = false;

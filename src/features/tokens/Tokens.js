@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-const tokens = () => {
+export const Tokens = () => {
   const { tokens } = useSelector((state) => state.tokens);
   return (
     <div>
@@ -9,5 +9,3 @@ const tokens = () => {
     </div>
   );
 }
-
-export default tokens;

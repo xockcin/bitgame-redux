@@ -6,8 +6,7 @@ import {
   newGame,
   saveToReg,
   doRegStep,
-  bitFlip,
-  setLevel
+  bitFlip
 } from "./counterSlice";
 import {spendTokens,earnTokens} from "../tokens/tokensSlice"
 import styles from "./Counter.module.css";
