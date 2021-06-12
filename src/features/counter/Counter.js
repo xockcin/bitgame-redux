@@ -28,7 +28,7 @@ export const Counter = () => {
 
   const byte = byteFromNumber(value).map((bit, index) => {
     return (
-      <Button className={"m-1 border"} variant={bit ? "dark" : "light"} onClick={() => dispatch(bitFlip(7-index))}>
+      <Button className={"m-1 border"} variant={bit ? "dark" : "light"}>
         {7 - index}
       </Button>
     );
