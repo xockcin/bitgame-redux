@@ -109,3 +109,21 @@ Here is what I need to do next:
 - Split the Counter component and state slice into pieces: byte, register, buttons, reg buttons, etc.
 - Create a system for controlling the state of the game in order to implement the tutorial content.
 - Implement a system for earning and spending tokens, and for grabbing and using special tokens.
+
+### 6/12/21
+
+I still need to split the counter component. I think it only needs to be in two parts: the bytes and the buttons. The tricky thing is that they are related to one another. But let's think about it. The bytes component only needs to know the current number, register and goal. It doesn't need to know anything about the buttons. The buttons need to be about to change the number or save to the register, but they don't need to know what the number, register or goal are. 
+
+So how should I go about this? First of all, I think I should reorganize the file structure so that the components are all in one folder and the slices are in another folder. The reason I want to do this is that not all slices will go with a component. Putting components and slices together in "feature" folders seems like it ties state to components in a way that goes against the freedom that Redux is supposed to grant you.
+
+Let me take stock.
+
+My components right now are:
+- Tokens, which just shows the number of tokens - not really developed yet.
+- Display, which shows the origin, goal and steps and also contains the level-select dropdown menu.
+- Retro, which just shows the current number in four different forms.
+- Counter, which does everything else.
+
+I also have three different slices, one each for Display, Counter and Tokens. There is no Retro slice.
+
+I am going to try reorganizing the file structure so that all the components are in one folder and all the slices are in another folder.
