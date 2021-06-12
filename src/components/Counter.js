@@ -6,8 +6,8 @@ import {
   newGame,
   saveToReg,
   doRegStep
-} from "./counterSlice";
-import {spendTokens,earnTokens} from "../tokens/tokensSlice"
+} from "../state/counterSlice";
+import {spendTokens,earnTokens} from "../state/tokensSlice"
 import styles from "./Counter.module.css";
 
 export const Counter = () => {

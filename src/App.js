@@ -1,8 +1,8 @@
 import React from "react";
-import {Counter} from "./features/counter/Counter";
-import {Display} from "./features/display/Display"
-import {Retro} from "./features/retro/Retro"
-import {Tokens} from "./features/tokens/Tokens"
+import {Counter} from "./components/Counter";
+import { Display } from "./components/Display";
+import { Retro } from "./components/Retro";
+import { Tokens } from "./components/Tokens";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 

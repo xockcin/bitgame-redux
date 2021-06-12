@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {pairs} from "../../data/pairs"
+import {pairs} from "../data/pairs"
 
 const doToken = (number,token) => {
   switch (token) {

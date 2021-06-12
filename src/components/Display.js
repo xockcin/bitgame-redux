@@ -1,8 +1,8 @@
 import React from "react";
 import {Dropdown} from "react-bootstrap"
 import { useSelector, useDispatch } from "react-redux";
-import {setLevel} from '../counter/counterSlice'
-import { showGoal, hideGoal } from "./displaySlice";
+import {setLevel} from '../state/counterSlice'
+import { showGoal, hideGoal } from "../state/displaySlice";
 
 export const Display = () => {
   const { steps, pair, level, value } = useSelector((state) => state.counter);
