@@ -24,9 +24,9 @@ export const Counter = () => {
       result.unshift(!!(number & (1 << i)));
     }
     return result;
-  };
+  }
 
-  const byte = byteFromNumber(value).map((bit, index) => {
+  const byteButtons = (byte) => byteFromNumber(byte).map((bit, index) => {
     return (
       <Button className={"m-1 border"} variant={bit ? "dark" : "light"}>
         {7 - index}
@@ -34,21 +34,9 @@ export const Counter = () => {
     );
   });
 
-  const goal = byteFromNumber(pair[1]).map((bit, index) => {
-    return (
-      <Button className={"m-1 border"} variant={bit ? "dark" : "light"}>
-        {7 - index}
-      </Button>
-    );
-  });
-
-  const reg = byteFromNumber(register).map((bit, index) => {
-    return (
-      <Button className={"m-1 border"} variant={bit ? "dark" : "light"}>
-        {7 - index}
-      </Button>
-    );
-  });
+  const num = byteButtons(value)
+  const goal = byteButtons(pair[1])
+  const reg = byteButtons(register)
 
   const tokenArray = ["+", "<", "~", ">", "-"]
 
@@ -88,7 +76,7 @@ export const Counter = () => {
           <span>{register ? reg : ""}</span>
         </h4>
         <h4>
-          <span>{showGoal ? goal : byte}</span>
+          <span>{showGoal ? goal : num}</span>
         </h4>
       </div>
       <div className={styles.row}>{buttons}</div>
