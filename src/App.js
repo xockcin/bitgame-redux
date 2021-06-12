@@ -1,8 +1,9 @@
 import React from "react";
-import {Counter} from "./components/Counter";
 import { Display } from "./components/Display";
 import { Retro } from "./components/Retro";
 import { Tokens } from "./components/Tokens";
+import {Buttons} from "./components/Buttons"
+import {Bytes} from "./components/Bytes";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -11,7 +12,8 @@ function App() {
     <div className="App">
       <Tokens />
       <Display />
-      <Counter />
+      <Bytes />
+      <Buttons />
     </div>
   );
 }
