@@ -1,12 +1,11 @@
 import React, {useEffect} from "react";
-import {Button, Dropdown} from "react-bootstrap"
+import {Button} from "react-bootstrap"
 import { useSelector, useDispatch } from "react-redux";
 import {
   doStep,
   newGame,
   saveToReg,
-  doRegStep,
-  bitFlip
+  doRegStep
 } from "./counterSlice";
 import {spendTokens,earnTokens} from "../tokens/tokensSlice"
 import styles from "./Counter.module.css";
